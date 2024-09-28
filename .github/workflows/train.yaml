@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: iris-model
-          path: model.pkl
+          path: model
           retention-days: 5
 
       # # Configure Git
