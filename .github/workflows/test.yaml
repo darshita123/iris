@@ -19,26 +19,14 @@ jobs:
         uses: actions/checkout@v3
 
       # Download the trained model artifact from the previous pipeline
-      - name: Get Previous Workflow Run ID
-        run: |
-          previous_run_id=$(curl -s https://api.github.com/repos/darshita123/iris/actions/workflows/Train Iris Model/runs?per_page=1 | jq -r '.workflows[0].runs[0].id')
-      - name: Download Artifacts
-        run: |
-          artifacts_url="https://api.github.com/repos/darshita123/iris/actions/runs/${previous_run_id}/artifacts"
-          artifacts_data=$(curl -s "${artifacts_url}")
-          artifacts_json=$(echo "${artifacts_data}" | jq -r '.')
-          for artifact in "${artifacts_json}"; do
-            artifact_name="${artifact.name}"
-            artifact_download_url="${artifact.archive_download_url}"
-            curl -o "${artifact_name}.zip" "${artifact_download_url}"
-          done
-      # - name: Download model artifact
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: iris-model
-      #     run-id: ${{ github.run_id }}
-      # - name: Display structure of downloaded files
-      #   run: ls -R
+     
+      - name: Download model artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: iris-model
+          run-id: 11085870945
+      - name: Display structure of downloaded files
+        run: ls -R
 
       # Add the testing data file
       - name: Add test data
