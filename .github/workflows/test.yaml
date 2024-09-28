@@ -22,8 +22,8 @@ jobs:
       - name: Get Previous Workflow Run ID
         run: |
           previous_run_id=$(curl -s https://api.github.com/repos/darshita123/iris/actions/workflows/Train Iris Model/runs?per_page=1 | jq -r '.workflows[0].runs[0].id')
-     - name: Download Artifacts
-       run: |
+      - name: Download Artifacts
+        run: |
           artifacts_url="https://api.github.com/repos/darshita123/iris/actions/runs/${previous_run_id}/artifacts"
           artifacts_data=$(curl -s "${artifacts_url}")
           artifacts_json=$(echo "${artifacts_data}" | jq -r '.')
