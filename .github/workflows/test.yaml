@@ -3,7 +3,7 @@ name: Test Iris Model
 
 on:
   workflow_run:
-    # workflows: ["Train Iris Model"]
+    workflows: ["Train Iris Model"]
     branches:
       - main
     types:
@@ -24,6 +24,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: iris-model
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
           run-id: 11085967302
       - name: Display structure of downloaded files
         run: ls -R
