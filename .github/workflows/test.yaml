@@ -3,7 +3,7 @@ name: Test Iris Model
 
 on:
   workflow_run:
-    workflows: ["Train Iris Model"]
+    # workflows: ["Train Iris Model"]
     branches:
       - main
     types:
@@ -24,7 +24,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: iris-model
-          run-id: 11085870945
+          run-id: 11085967302
       - name: Display structure of downloaded files
         run: ls -R
 
