@@ -21,8 +21,9 @@ jobs:
       # Download the trained model artifact from the previous pipeline
       - name: Download model artifact
         uses: actions/download-artifact@v4
-        # with:
-        #   name: iris-model
+        with:
+          name: iris-model
+          run-id: ${{ github.run_id }}
       - name: Display structure of downloaded files
         run: ls -R
 
