@@ -16,7 +16,7 @@ clf = RandomForestClassifier()
 clf.fit(X_train, y_train)
 
 # Save the model to a file
-with open("model.pkl", "wb") as model_file:
+with open("model/model.pkl", "wb") as model_file:
     pickle.dump(clf, model_file)
 
 print("Model trained and saved as model.pkl")
