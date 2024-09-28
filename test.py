@@ -3,7 +3,7 @@ import pickle
 from sklearn.metrics import accuracy_score
 
 # Load the model
-with open("model.pkl", "rb") as model_file:
+with open("model/model.pkl", "rb") as model_file:
     model = pickle.load(model_file)
 
 # Load the test data
